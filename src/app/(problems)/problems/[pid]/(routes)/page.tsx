@@ -1,8 +1,14 @@
+"use client"
+
+import Topbar from '@/components/layout/Topbar';
 
 function page() {
   return (
-    <div>problems pid page</div>
-  )
+    <div>
+      <Topbar problemPage />
+      <h1>problems pid page</h1>
+    </div>
+  );
 }
 
-export default page
+export default page;

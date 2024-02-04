@@ -1,18 +1,15 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
 
 import { useClerk } from '@clerk/nextjs';
-import { useTheme } from 'next-themes';
 
 import ThemeToggle from '@/components/base/ThemeToggle';
 import UserAccountNav from '../base/UserAccountNav';
 
-
 const Navbar = () => {
-  const { theme } = useTheme();
-  const { user } = useClerk()
-  console.log(user)
+  const { user } = useClerk();
+
   return (
     <div className="navbar fixed inset-x-0 top-0 tex-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300  py-2 ">
       <div className="navbar-container flex items-center justify-between h-full gap-2 px-8 mx-auto max-w-7xl">
@@ -30,11 +27,6 @@ const Navbar = () => {
             <ThemeToggle />
           </div>
           <div className="navbar-item flex items-center">
-            {/* <UserButton
-              appearance={{
-                baseTheme: theme === "dark" ? dark : undefined,
-              }}
-            afterSignOutUrl="/" /> */}
             <UserAccountNav />
           </div>
         </div>
