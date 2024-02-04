@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import Navbar from '@/components/base/Navbar';
 import Providers from '@/providers';
 import ClerkProvider from '@/providers/implementations/ClerkProvider';
 
@@ -25,7 +24,6 @@ export default function RootLayout({
       <html lang="en">
         <body className={cn(inter.className, 'antialiased min-h-screen pt-16')}>
           <Providers>
-            <Navbar />
             {children}
           </Providers>
         </body>
