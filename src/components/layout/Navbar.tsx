@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { useClerk } from '@clerk/nextjs';
 import { AlignJustify, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { problems } from '@/utils/problems';
 
 import ThemeToggle from '@/components/base/ThemeToggle';
-import { useRouter } from 'next/router';
 import Timer from '../base/Timer';
 import UserAccountNav from '../base/UserAccountNav';
 import { Button } from '../ui/button';
@@ -19,10 +21,13 @@ interface TopbarProps {
 const Navbar: React.FC<TopbarProps> = ({ problemPage }) => {
   const { theme } = useTheme();
   const { user } = useClerk();
+
   const router = useRouter();
+  const searchParams = useSearchParams()
+  const pid = searchParams.get('pid')
 
   const handleProblemChange = (isForward: boolean) => {
-    const { order } = problems[router.query.pid as string] as Problem;
+    const { order } = problems[pid as string] as Problem;
     const direction = isForward ? 1 : -1;
     const nextProblemOrder = order + direction;
     const nextProblemKey = Object.keys(problems).find(
