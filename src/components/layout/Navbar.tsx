@@ -5,11 +5,11 @@ import Link from 'next/link';
 import { useClerk } from '@clerk/nextjs';
 import { AlignJustify, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { useRouter, useSearchParams } from 'next/navigation';
 
 import { problems } from '@/utils/problems';
 
 import ThemeToggle from '@/components/base/ThemeToggle';
+import { useParams, useRouter } from 'next/navigation';
 import Timer from '../base/Timer';
 import UserAccountNav from '../base/UserAccountNav';
 import { Button } from '../ui/button';
@@ -23,11 +23,10 @@ const Navbar: React.FC<TopbarProps> = ({ problemPage }) => {
   const { user } = useClerk();
 
   const router = useRouter();
-  const searchParams = useSearchParams()
-  const pid = searchParams.get('pid')
+  const params = useParams<{ pid: string }>();
 
   const handleProblemChange = (isForward: boolean) => {
-    const { order } = problems[pid as string] as Problem;
+    const { order } = problems[params.pid as string] as Problem;
     const direction = isForward ? 1 : -1;
     const nextProblemOrder = order + direction;
     const nextProblemKey = Object.keys(problems).find(
@@ -63,8 +62,8 @@ const Navbar: React.FC<TopbarProps> = ({ problemPage }) => {
             </Link>
           </div>
         </div>
-        <div className="navbar-content hidden md:flex flex-1 items-center justify-between">
-          <div className="navbar-item ml-2">
+        <div className="navbar-content hidden md:flex flex-1 items-center">
+          <div className="navbar-item ml-2 w-full">
             {problemPage && (
               <div className="flex items-center gap-4 flex-1 justify-center">
                 <Button
@@ -92,9 +91,9 @@ const Navbar: React.FC<TopbarProps> = ({ problemPage }) => {
               </div>
             )}
           </div>
-          <div className="navbar-item">{user && problemPage && <Timer />}</div>
         </div>
         <div className="navbar-account ml-auto flex items-center space-x-4">
+          <div className="navbar-item">{user && problemPage && <Timer />}</div>
           <div className="navbar-item">
             <ThemeToggle />
           </div>

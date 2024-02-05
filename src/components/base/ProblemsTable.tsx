@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 
+import { problemsData, solvedProblems } from '@/mock/problems';
 import { AiFillYoutube } from 'react-icons/ai';
 import { BsCheckCircle } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
@@ -9,10 +10,6 @@ import { IoClose } from 'react-icons/io5';
 interface ProblemsTableProps {
   setLoadingProblems: React.Dispatch<React.SetStateAction<boolean>>;
 }
-function useGetProblems(
-  setLoadingProblems: React.Dispatch<React.SetStateAction<boolean>>,
-) {}
-function useGetSolvedProblems() {}
 
 const ProblemsTable: React.FC<ProblemsTableProps> = ({
   setLoadingProblems,
@@ -22,8 +19,8 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
     videoId: '',
   });
 
-  const problems: any = useGetProblems(setLoadingProblems);
-  const solvedProblems: any = useGetSolvedProblems();
+  const problems = useGetProblems(setLoadingProblems);
+  // const solvedProblems: any = useGetSolvedProblems();
 
   console.log('solvedProblems', solvedProblems);
 
@@ -41,9 +38,9 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
   }, []);
   return (
     <>
-      {problems && solvedProblems && (
+      {problems && (
         <tbody className="text-white">
-          {problems.map((problem: any, idx: any) => {
+          {problems.map((problem, idx) => {
             const difficulyColor =
               problem.difficulty === 'Easy'
                 ? 'text-dark-green-s'
@@ -131,3 +128,16 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
   );
 };
 export default ProblemsTable;
+
+function useGetProblems(
+  setLoadingProblems: React.Dispatch<React.SetStateAction<boolean>>,
+) {
+  useEffect(() => {
+    const getProblems = async () => {
+      setLoadingProblems(false);
+    };
+    getProblems();
+  }, [setLoadingProblems]);
+  return problemsData;
+}
+function useGetSolvedProblems() {}
