@@ -2,16 +2,26 @@
 
 import { useState } from 'react';
 
-import Topbar from '@/components/layout/Topbar';
+import ProblemsTable from '@/components/base/ProblemsTable';
 import useHasMounted from '@/hooks/useHasMounted';
+import { useTheme } from 'next-themes';
 
 const LoadingSkeleton = () => {
+  const { theme } = useTheme();
   return (
     <div className="flex items-center space-x-12 mt-4 px-6">
-      <div className="w-6 h-6 shrink-0 rounded-full bg-dark-layer-1"></div>
-      <div className="h-4 sm:w-52  w-32  rounded-full bg-dark-layer-1"></div>
-      <div className="h-4 sm:w-52  w-32 rounded-full bg-dark-layer-1"></div>
-      <div className="h-4 sm:w-52 w-32 rounded-full bg-dark-layer-1"></div>
+      <div
+        className={`w-6 h-6 shrink-0 rounded-full bg-dark-layer-1 ${theme === 'light' ? 'opacity-25' : ''}`}
+      ></div>
+      <div
+        className={`h-4 sm:w-52  w-32  rounded-full bg-dark-layer-1 ${theme === 'light' ? 'opacity-25' : ''}`}
+      ></div>
+      <div
+        className={`h-4 sm:w-52  w-32 rounded-full bg-dark-layer-1 ${theme === 'light' ? 'opacity-25' : ''}`}
+      ></div>
+      <div
+        className={`h-4 sm:w-52 w-32 rounded-full bg-dark-layer-1 ${theme === 'light' ? 'opacity-25' : ''}`}
+      ></div>
       <span className="sr-only">Loading...</span>
     </div>
   );
@@ -22,11 +32,10 @@ export default async function Homepage() {
   const hasMounted = useHasMounted();
 
   return (
-    <div className="bg-dark-layer-2 min-h-screen">
-      <Topbar />
+    <div className="min-h-screen">
       <h1
-        className="text-2xl text-center text-gray-700 dark:text-gray-400 font-medium
-					uppercase mt-10 mb-5"
+        className="text-2xl text-center dark:text-gray-400 font-medium
+					uppercase pt-10 pb-5"
       >
         &ldquo; QUALITY OVER QUANTITY &rdquo; 👇
       </h1>
@@ -59,6 +68,7 @@ export default async function Homepage() {
                   </tr>
                 </thead>
               )}
+              <ProblemsTable setLoadingProblems={setLoadingProblems} />
             </table>
           </div>
         )}

@@ -7,7 +7,7 @@ export default async function SetupLayout({
 }) {
   return (
     <>
-      <Navbar />
+      <Navbar problemPage />
       {children}
     </>
   );
