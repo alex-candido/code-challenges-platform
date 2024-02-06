@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "react-icons": "^5.0.1",
     "react-spinners": "^0.13.8",
+    "react-split": "^2.0.14",
     "react-youtube": "^10.1.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
