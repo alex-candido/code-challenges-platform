@@ -1,8 +1,11 @@
+"use client"
 
 function page() {
   return (
-    <div>problems pid page</div>
-  )
+    <div>
+      <h1>problems pid page</h1>
+    </div>
+  );
 }
 
-export default page
+export default page;
