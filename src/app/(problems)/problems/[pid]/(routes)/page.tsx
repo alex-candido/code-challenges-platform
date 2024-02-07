@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 
-import Workspace from '@/components/base/Workspace';
+import Workspace from '@/components/workspace/Workspace';
 import useHasMounted from '@/hooks/useHasMounted';
 import { problems } from '@/utils/problems';
 

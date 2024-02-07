@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import Split from 'react-split';
 
+import { javascript } from "@codemirror/lang-javascript";
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import CodeMirror from "@uiw/react-codemirror";
+
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useClerk } from '@clerk/nextjs';
 import { useParams } from 'next/navigation';
+
+import EditorFooter from './EditorFooter';
 import PreferenceNav from './PreferenceNav';
 
 interface PlaygroundProps {
@@ -38,8 +44,15 @@ const Playground: React.FC<PlaygroundProps> = ({
 
   const { user } = useClerk();
 
+  const handleSubmit = async () => {}
+
+  const onChange = (value: string) => {
+		setUserCode(value);
+		localStorage.setItem(`code-${pid}`, JSON.stringify(value));
+	};
+
   return (
-    <div className="flex flex-col  relative overflow-x-hidden">
+    <div className="flex flex-col bg-dark-layer-1 relative overflow-x-hidden">
       <PreferenceNav settings={settings} setSettings={setSettings} />
       <Split
         className="h-[calc(100vh-94px)]"
@@ -47,7 +60,15 @@ const Playground: React.FC<PlaygroundProps> = ({
         sizes={[60, 40]}
         minSize={60}
       >
-        <div className="w-full overflow-auto"></div>
+        <div className="w-full overflow-auto">
+          <CodeMirror
+						value={userCode}
+						theme={vscodeDark}
+						onChange={onChange}
+						extensions={[javascript()]}
+						style={{ fontSize: settings.fontSize }}
+					/>
+        </div>
         <div className="w-full px-5 overflow-auto">
           {/* testcase heading */}
           <div className="flex h-10 items-center space-x-6">
@@ -91,6 +112,7 @@ const Playground: React.FC<PlaygroundProps> = ({
 					</div>
         </div>
       </Split>
+      <EditorFooter handleSubmit={handleSubmit} />
     </div>
   );
 };

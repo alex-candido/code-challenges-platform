@@ -4,8 +4,8 @@ import Split from "react-split";
 
 import useWindowSize from '@/hooks/useWindowSize';
 
-import Playground from "../base/Playground";
-import ProblemDescription from "../base/ProblemDescription";
+import Playground from "../workspace/Playground";
+import ProblemDescription from "../workspace/ProblemDescription";
 
 interface WorkspaceProps {
 	problem: Problem;
