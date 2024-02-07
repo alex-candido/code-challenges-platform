@@ -34,7 +34,7 @@ export default async function Homepage() {
   return (
     <div className="min-h-screen">
       <h1
-        className="text-2xl text-center dark:text-gray-400 font-medium
+        className="text-2xl text-center font-medium
 					uppercase pt-10 pb-5"
       >
         &ldquo; QUALITY OVER QUANTITY &rdquo; 👇
@@ -47,24 +47,24 @@ export default async function Homepage() {
             ))}
           </div>
         )}
-        <table className="text-sm text-left text-gray-500 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto">
+        <table className="text-smtext-left sm:w-7/12 w-full max-w-[1200px] mx-auto">
           {!loadingProblems && (
-            <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border-b ">
+            <thead className="text-xs uppercase border-b">
               <tr>
-                <th scope="col" className="px-1 py-3 w-0 font-medium">
+                <th scope="col" className="px-1 py-3 w-0 font-bold">
                   Status
                 </th>
-                <th scope="col" className="px-6 py-3 w-0 font-medium">
+                <th scope="col" className="px-6 py-3 w-0 font-bold">
                   Title
                 </th>
-                <th scope="col" className="px-6 py-3 w-0 font-medium">
+                <th scope="col" className="px-6 py-3 w-0 font-bold">
                   Difficulty
                 </th>
 
-                <th scope="col" className="px-6 py-3 w-0 font-medium">
+                <th scope="col" className="px-6 py-3 w-0 font-bold">
                   Category
                 </th>
-                <th scope="col" className="px-6 py-3 w-0 font-medium">
+                <th scope="col" className="px-6 py-3 w-0 font-bold">
                   Solution
                 </th>
               </tr>

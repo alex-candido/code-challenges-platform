@@ -5,7 +5,7 @@ interface PreferenceNavProps {
   setSettings: React.Dispatch<React.SetStateAction<ISettings>>;
 }
 
-const preferenceNav: React.FC<PreferenceNavProps> = ({
+const PreferenceNav: React.FC<PreferenceNavProps> = ({
   setSettings,
   settings,
 }) => {
@@ -23,4 +23,4 @@ const preferenceNav: React.FC<PreferenceNavProps> = ({
     </div>
   );
 };
-export default preferenceNav;
+export default PreferenceNav;
