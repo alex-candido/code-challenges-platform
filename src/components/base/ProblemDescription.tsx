@@ -117,7 +117,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({
           )}
 
           {/* Problem Statement(paragraphs) */}
-          <div className="text-white text-sm">
+          <div className="text-sm">
             <div
               dangerouslySetInnerHTML={{ __html: problem.problemStatement }}
             />
@@ -127,14 +127,13 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({
           <div className="mt-4">
             {problem.examples.map((example, index) => (
               <div key={example.id}>
-                <p className="font-medium text-white ">Example {index + 1}: </p>
+                <p className="font-medium ">Example {index + 1}: </p>
                 {example.img && (
                   <img src={example.img} alt="" className="mt-3" />
                 )}
                 <div className="example-card">
                   <pre>
-                    <strong className="text-white">Input: </strong>{' '}
-                    {example.inputText}
+                    <strong className="">Input: </strong> {example.inputText}
                     <br />
                     <strong>Output:</strong>
                     {example.outputText} <br />
@@ -151,8 +150,8 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({
 
           {/* Constraints */}
           <div className="my-8 pb-4">
-            <div className="text-white text-sm font-medium">Constraints:</div>
-            <ul className="text-white ml-5 list-disc ">
+            <div className=" text-sm font-medium">Constraints:</div>
+            <ul className=" ml-5 list-disc ">
               <div dangerouslySetInnerHTML={{ __html: problem.constraints }} />
             </ul>
           </div>
