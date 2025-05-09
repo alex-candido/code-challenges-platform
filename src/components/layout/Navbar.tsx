@@ -50,7 +50,7 @@ const Navbar: React.FC<TopbarProps> = ({ problemPage }) => {
 
   return (
     <div
-      className={`navbar fixed inset-x-0 top-0 tex-white dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300 py-3 ${theme === 'light' ? 'bg-white' : 'bg-none'}`}
+      className={`navbar fixed inset-x-0 top-0 dark:bg-gray-950 z-[10] h-fit border-b border-zinc-300 py-3 ${theme === 'light' ? 'bg-white' : 'bg-none'}`}
     >
       <div className="navbar-container flex items-center justify-between h-full gap-2 px-8 mx-auto max-w-7xl">
         <div className="navbar-brand">

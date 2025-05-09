@@ -39,7 +39,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
   return (
     <>
       {problems && (
-        <tbody className="text-white">
+        <tbody className="text-base">
           {problems.map((problem, idx) => {
             const difficulyColor =
               problem.difficulty === 'Easy'
@@ -49,7 +49,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
                   : 'text-dark-pink';
             return (
               <tr
-                className={`${idx % 2 == 1 ? 'bg-dark-layer-1' : ''}`}
+                className={`border-b`}
                 key={problem.id}
               >
                 <th className="px-2 py-4 font-medium whitespace-nowrap text-dark-green-s">
@@ -61,7 +61,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = ({
                   {problem.link ? (
                     <Link
                       href={problem.link}
-                      className="hover:text-blue-600 cursor-pointer"
+                      className="cursor-pointer"
                       target="_blank"
                     >
                       {problem.title}
